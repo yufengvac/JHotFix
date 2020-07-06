@@ -1,0 +1,11 @@
+# JHotFix
+热修复Demo实现
+
+通过自己实现一个简易的热修复Demo，了解到的知识点：
+1、ClassLoader类加载过程，双亲委托查找机制，PathClassLoader、DexClassLoader、BaseDexClassLoader主要的关系作用，DexPathList、Element等
+2、反射，需要发射拿到APP原本的DexPathList继而再找到Element数组，然后将补丁包Dex的Element数组与之合并，最后再通过反射将数组设置给APP原有的element数组
+
+todo:兼容性问题 1、CLASS_ISPREVERIFIED问题，同一个dex下的一个类引用另外一个类，会打上CLASS_ISPREVERIFIED标签
+2、Android 7.0混编之后的问题，android7.0引入了jit,对热点代码进行即使编译，如果是该部分的代码需要修复，则会修复失败
+
+考虑：资源如何修复、so包如何修复
