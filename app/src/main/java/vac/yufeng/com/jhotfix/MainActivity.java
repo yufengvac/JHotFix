@@ -5,11 +5,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.LayoutInflaterCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -22,9 +24,12 @@ import java.lang.reflect.Method;
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate");
 //        LayoutInflater layoutInflater = LayoutInflater.from(this);
 //        try {
 //            Field mFactorySet = layoutInflater.getClass().getDeclaredField("mFactorySet");
@@ -65,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.jump_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
     }
 
     private void init() {
@@ -91,5 +103,47 @@ public class MainActivity extends AppCompatActivity {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e(TAG, "onNewIntent");
     }
 }
