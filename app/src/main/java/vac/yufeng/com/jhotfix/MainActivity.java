@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(MainActivity.this, "修复了", Toast.LENGTH_LONG).show();
-                throw new NullPointerException("99崩溃了");
+                throw new NullPointerException("909崩溃了");
             }
         });
 
